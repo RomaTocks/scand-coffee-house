@@ -1,64 +1,56 @@
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <style>
-        BODY { font-family: verdana, arial; font-size: 11px; color: black; margin: 10px;}
-
-        TABLE { font-family: verdana, arial; font-size: 12px; margin: 0px; border: 0px;}
-
-        TH { padding: 5px 5px 5px 5px;}
-
-        TD { padding: 2px 5px 2px 5px; height: 23px;}
-
-        INPUT.field { height: 18px; margin: 0px; font-family: verdana, arial; font-size: 12px;}
-    </style>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/normalize.css">
 </head>
 <body>
-<table cellspacing="0px" cellpadding="2px" border="0px" style="border: 1px #B0B0B0 solid">
-    <tr style="background-color: #C0C0C7">
-        <th colspan="2">Доставка</th>
-    </tr>
-    <tr style="background-color: #F0F0F0">
-        <td><b>ФИО</b></td>
-        <td nowrap="true"><input class="field" type="text" size="30" onfocus="blur();" value="Иванов Пётр Сидорович"/></td>
-    </tr>
-    <tr style="background-color: #F0F0F0">
-        <td><b>Адрес</b></td>
-        <td nowrap="true"><input class="field" type="text" size="30" onfocus="blur();" value="Ивановская 10, д. 2"/></td>
-    </tr>
-    <tr style="background-color: #F0F0F0">
-        <td colspan="2" align="right"><input type="button" value="Заказать" onclick="document.location.href='order'"/></td>
-    </tr>
-</table>
-<br/>
-<table cellspacing="0px" cellpadding="2px" border="0px" style="border: 1px #B0B0B0 solid">
-    <tr style="background-color: #C0C0C7">
-        <th>Название</th>
-        <th>Цена</th>
-        <th>Количество</th>
-        <th>Всего</th>
-    </tr>
-    <tr style="background-color: #F0F0F0">
-        <td nowrap="true">Очень крепкий и горячий кофе.</td>
-        <td nowrap="true">20 TGR</td>
-        <td align="right">3</td>
-        <td><font color="red">40</font> TGR</td>
-    </tr>
-    <tr style="background-color: #E0E0E0">
-        <td colspan="3" align="right"><b>Сумма:</b></td>
-        <td align="right">40 TGR</td>
-    </tr>
-    <tr style="background-color: #F0F0F0">
-        <td colspan="3" align="right"><b>Доставка:</b></td>
-        <td align="right">5 TGR</td>
-    </tr>
-    <tr style="background-color: #E0E0E0">
-        <td colspan="3" align="right"><b>Всего:</b></td>
-        <td align="right">45 TGR</td>
-    </tr>
-</table>
-<br/>
-<a href="/"><link>Вернуться в магазин</link></a>
+<form th:object="${order}" th:action="@{/orderlist/order}" th:method="POST">
+    <table cellspacing="0px" cellpadding="2px" border="0px" style="border: 1px #B0B0B0 solid">
+        <tr style="background-color: #C0C0C7">
+            <th colspan="2">Доставка</th>
+        </tr>
+        <tr style="background-color: #F0F0F0">
+            <td><b>ФИО</b></td>
+            <td nowrap="true"><input class="field" type="text" size="30" th:field="*{name}"/></td>
+        </tr>
+        <tr style="background-color: #F0F0F0">
+            <td><b>Адрес</b></td>
+            <td nowrap="true"><input class="field" type="text" size="30" th:field="*{deliveryAddress}"/></td>
+        </tr>
+        <tr style="background-color: #F0F0F0">
+            <td colspan="2" align="right"><input type="submit" value="Заказать"/></td>
+        </tr>
+    </table>
+    <br/>
+    <table cellspacing="0px" cellpadding="2px" border="0px" style="border: 1px #B0B0B0 solid">
+        <tr style="background-color: #C0C0C7">
+            <th>Название</th>
+            <th>Цена</th>
+            <th>Количество</th>
+            <th>Всего</th>
+        </tr>
+        <tr style="background-color: #F0F0F0" th:each="item : ${orderItems}">
+            <td nowrap="true" th:text="${item.coffeeType.typeName}"></td>
+            <td nowrap="true" th:text="${item.coffeeType.price}"></td>
+            <td align="right" th:text="${item.quantity}"></td>
+            <td><font color="red"><p></p></font> TGR</td>
+        </tr>
+        <tr style="background-color: #E0E0E0">
+            <td colspan="3" align="right"><b>Сумма:</b></td>
+            <td align="right"><p th:text="${cost}"></p> TGR</td>
+        </tr>
+        <tr style="background-color: #F0F0F0">
+            <td colspan="3" align="right"><b>Доставка:</b></td>
+            <td align="right">5 TGR</td>
+        </tr>
+        <tr style="background-color: #E0E0E0">
+            <td colspan="3" align="right"><b>Всего:</b></td>
+            <td align="right">45 TGR</td>
+        </tr>
+    </table>
+    <br/>
+    <a href="/"><link>Вернуться в магазин</link></a>
+</form>
 </body>
 </html>
 
