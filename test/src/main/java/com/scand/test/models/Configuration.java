@@ -1,16 +1,21 @@
 package com.scand.test.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+/**
+ * Класс отвечающий за правила подсчёта цены заказа.
+ */
 @Entity
 @Table(name = "configuration")
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@ToString
+@Getter
+@Setter
 public class Configuration extends Coffee {
   @Column(name = "value")
   private String value;

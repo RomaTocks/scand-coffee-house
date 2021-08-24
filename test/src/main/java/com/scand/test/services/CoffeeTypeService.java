@@ -1,5 +1,8 @@
 package com.scand.test.services;
 
-public interface CoffeeTypeService
+import com.scand.test.models.CoffeeType;
+
+public interface CoffeeTypeService extends CrudService<CoffeeType>
 {
+
 }

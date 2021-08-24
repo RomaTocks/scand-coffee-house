@@ -1,16 +1,11 @@
 package com.scand.test.services;
 
-import com.scand.test.models.Coffee;
-import com.scand.test.models.CoffeeType;
-
 import java.util.List;
-import java.util.Optional;
 
-public interface CrudService
+public interface CrudService<T>
 {
-    Coffee findById(int id);
-    List<Coffee> findAll();
-    void saveEntity(Coffee coffee);
-    Coffee put(Coffee coffee);
-    void delete(int id);
+    T findById(Integer id);
+    List<T> findAll();
+    T saveEntity(T coffee);
+    void delete(Integer id);
 }

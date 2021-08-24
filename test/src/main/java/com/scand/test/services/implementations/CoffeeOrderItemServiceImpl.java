@@ -1,42 +1,68 @@
 package com.scand.test.services.implementations;
 
-import com.scand.test.models.Coffee;
+import com.scand.test.models.CoffeeOrderItem;
+import com.scand.test.models.CoffeeType;
+import com.scand.test.repositories.CoffeeOrderItemRepository;
 import com.scand.test.services.CoffeeOrderItemService;
-import com.scand.test.services.CrudService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 @Service
-public class CoffeeOrderItemServiceImpl implements CoffeeOrderItemService, CrudService
+public class CoffeeOrderItemServiceImpl implements CoffeeOrderItemService
 {
-    @Override
-    public Coffee findById(int id)
+    private final CoffeeOrderItemRepository coffeeOrderItemRepository;
+
+    @Autowired
+    public CoffeeOrderItemServiceImpl(CoffeeOrderItemRepository coffeeOrderItemRepository)
     {
-        return null;
+        this.coffeeOrderItemRepository = coffeeOrderItemRepository;
     }
 
     @Override
-    public List<Coffee> findAll()
+    public CoffeeOrderItem findById(Integer id)
     {
-        return null;
+        return coffeeOrderItemRepository.findById(id).get();
     }
 
     @Override
-    public void saveEntity(Coffee coffee)
+    public List<CoffeeOrderItem> findAll()
     {
-
+        return coffeeOrderItemRepository.findAll();
     }
 
     @Override
-    public Coffee put(Coffee coffee)
+    public CoffeeOrderItem saveEntity(CoffeeOrderItem coffee)
     {
-        return null;
+       return coffeeOrderItemRepository.save(coffee);
     }
 
     @Override
-    public void delete(int id)
+    public void delete(Integer id)
     {
+        coffeeOrderItemRepository.deleteById(id);
+    }
 
+    @Override
+    public List<CoffeeOrderItem> coffeeToOrderItem(List<CoffeeType> coffeeTypesList, List<Integer> coffeeCounts)
+    {
+        List<CoffeeOrderItem> coffeeOrderItems = new ArrayList<>();
+        coffeeCounts.removeIf(Objects::isNull);
+        Iterator<CoffeeType> coffeeTypeIterator = coffeeTypesList.iterator();
+        Iterator<Integer> coffeeCountsIterator = coffeeCounts.iterator();
+        while (coffeeTypeIterator.hasNext() && coffeeCountsIterator.hasNext()) {
+            coffeeOrderItems.add(new CoffeeOrderItem(coffeeTypeIterator.next(),coffeeCountsIterator.next()));
+        }
+        return coffeeOrderItems;
+    }
+
+    @Override
+    public List<CoffeeOrderItem> saveAllCoffeeOrderItems(List<CoffeeOrderItem> coffeeOrderItems)
+    {
+        return coffeeOrderItemRepository.saveAll(coffeeOrderItems);
     }
 }

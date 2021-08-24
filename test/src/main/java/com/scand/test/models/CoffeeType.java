@@ -2,17 +2,22 @@ package com.scand.test.models;
 
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.List;
 
 @Entity
 @Table(name = "coffeetype")
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 public class CoffeeType extends Coffee
 {
   @Column(name = "type_name")
@@ -21,12 +26,17 @@ public class CoffeeType extends Coffee
   private double price;
   @Column(name = "disabled")
   private String disabled;
-  @OneToMany
+  @OneToMany(mappedBy = "coffeeType")
   private List<CoffeeOrderItem> orderItems;
 
-  public CoffeeType(String typeName)
+  @Override
+  public String toString()
   {
-    this.typeName = typeName;
+    return "CoffeeType{" +
+            "typeName='" + typeName + '\'' +
+            ", price=" + price +
+            ", disabled='" + disabled + '\'' +
+            '}';
   }
 }
 

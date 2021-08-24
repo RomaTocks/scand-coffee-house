@@ -1,44 +1,47 @@
 package com.scand.test.services.implementations;
 
-import com.scand.test.models.Coffee;
 import com.scand.test.models.CoffeeType;
+import com.scand.test.repositories.CoffeeTypeRepository;
 import com.scand.test.services.CoffeeTypeService;
-import com.scand.test.services.CrudService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CoffeeTypeServiceImpl implements CoffeeTypeService, CrudService
+public class CoffeeTypeServiceImpl implements CoffeeTypeService
 {
 
-    @Override
-    public Coffee findById(int id)
+    private final CoffeeTypeRepository coffeeTypeRepository;
+
+    @Autowired
+    public CoffeeTypeServiceImpl(CoffeeTypeRepository coffeeTypeRepository)
     {
-        return null;
+        this.coffeeTypeRepository = coffeeTypeRepository;
     }
 
     @Override
-    public List<Coffee> findAll()
+    public CoffeeType findById(Integer id)
     {
-        return null;
+        if(coffeeTypeRepository.findById(id).isPresent()) return coffeeTypeRepository.findById(id).get();
+        else return null;
     }
 
     @Override
-    public void saveEntity(Coffee coffee)
+    public List<CoffeeType> findAll()
     {
-
+        return coffeeTypeRepository.findAll();
     }
 
     @Override
-    public Coffee put(Coffee coffee)
+    public CoffeeType saveEntity(CoffeeType coffee)
     {
-        return null;
+        return coffeeTypeRepository.save(coffee);
     }
 
     @Override
-    public void delete(int id)
+    public void delete(Integer id)
     {
-
+        coffeeTypeRepository.deleteById(id);
     }
 }

@@ -1,5 +1,7 @@
 package com.scand.test.services;
 
-public interface ConfigurationService
+import com.scand.test.models.Configuration;
+
+public interface ConfigurationService extends CrudService<Configuration>
 {
 }

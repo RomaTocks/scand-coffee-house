@@ -1,42 +1,78 @@
 package com.scand.test.services.implementations;
 
-import com.scand.test.models.Coffee;
+import com.scand.test.models.CoffeeOrder;
+import com.scand.test.models.CoffeeOrderItem;
+import com.scand.test.repositories.CoffeeOrderRepository;
 import com.scand.test.services.CoffeeOrderService;
-import com.scand.test.services.CrudService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
+/**
+ * Сервис для CoffeeOrder сущностей.
+ */
 @Service
-public class CoffeeOrderServiceImpl implements CoffeeOrderService, CrudService
+public class CoffeeOrderServiceImpl implements CoffeeOrderService
 {
-    @Override
-    public Coffee findById(int id)
+    private final CoffeeOrderRepository coffeeOrderRepository;
+
+    @Autowired
+    public CoffeeOrderServiceImpl(CoffeeOrderRepository coffeeOrderRepository)
     {
-        return null;
+        this.coffeeOrderRepository = coffeeOrderRepository;
     }
 
     @Override
-    public List<Coffee> findAll()
+    public CoffeeOrder findById(Integer id)
     {
-        return null;
+        if(coffeeOrderRepository.findById(id).isPresent()) return coffeeOrderRepository.findById(id).get();
+        else return null;
     }
 
     @Override
-    public void saveEntity(Coffee coffee)
+    public List<CoffeeOrder> findAll()
     {
-
+        return coffeeOrderRepository.findAll();
     }
 
     @Override
-    public Coffee put(Coffee coffee)
+    public CoffeeOrder saveEntity(CoffeeOrder coffee)
     {
-        return null;
+        return coffeeOrderRepository.save(coffee);
     }
 
     @Override
-    public void delete(int id)
+    public void delete(Integer id)
     {
-
+        coffeeOrderRepository.deleteById(id);
     }
+
+    /**
+     * Метод генерирует новый заказ на основе входных данных.
+     * @param order Обьект типа CoffeeOrder для получения значений полей с формы HTML.
+     * @param coffeeOrderItems Коллекция обьектов содержащая позиции заказа.
+     * @return Возвращает сформированный заказ.
+     */
+    @Override
+    public CoffeeOrder generateNewOrder(CoffeeOrder order, List<CoffeeOrderItem> coffeeOrderItems)
+    {
+        CoffeeOrder newOrder = new CoffeeOrder();
+        newOrder.setName(order.getName());
+        newOrder.setDeliveryAddress(order.getDeliveryAddress());
+        newOrder.setOrderItems(coffeeOrderItems);
+        newOrder.setCost(calculateCostOfOrder(coffeeOrderItems));
+        newOrder.setOrderDate(new Timestamp(new Date().getTime()));
+        return newOrder;
+    }
+
+    @Override
+    public double calculateCostOfOrder(List<CoffeeOrderItem> coffeeOrderItems) {
+        final double[] cost = {0};
+        coffeeOrderItems.forEach(coffeeOrderItem -> cost[0] += coffeeOrderItem.getQuantity()*coffeeOrderItem.getCoffeeType().getPrice());
+        return cost[0];
+    }
+
 }
