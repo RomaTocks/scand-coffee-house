@@ -68,6 +68,7 @@ public class CoffeeOrderServiceImpl implements CoffeeOrderService
         return newOrder;
     }
 
+    // TODO: 30.08.2021 Внести в расчёт n-ую бесплатную кружку кофе и расчёт бесплатной доставки. 
     @Override
     public double calculateCostOfOrder(List<CoffeeOrderItem> coffeeOrderItems) {
         final double[] cost = {0};

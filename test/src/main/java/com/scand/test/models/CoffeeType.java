@@ -18,7 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-public class CoffeeType extends Coffee
+public class CoffeeType extends Coffee implements Comparable
 {
   @Column(name = "type_name")
   private String typeName;
@@ -37,6 +37,12 @@ public class CoffeeType extends Coffee
             ", price=" + price +
             ", disabled='" + disabled + '\'' +
             '}';
+  }
+
+  @Override
+  public int compareTo(Object o)
+  {
+    return (int) (this.price - ((CoffeeType)o).getPrice());
   }
 }
 

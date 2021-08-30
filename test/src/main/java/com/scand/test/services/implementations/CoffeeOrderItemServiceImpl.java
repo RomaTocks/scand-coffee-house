@@ -7,10 +7,7 @@ import com.scand.test.services.CoffeeOrderItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Service
 public class CoffeeOrderItemServiceImpl implements CoffeeOrderItemService
@@ -48,14 +45,12 @@ public class CoffeeOrderItemServiceImpl implements CoffeeOrderItemService
     }
 
     @Override
-    public List<CoffeeOrderItem> coffeeToOrderItem(List<CoffeeType> coffeeTypesList, List<Integer> coffeeCounts)
+    public List<CoffeeOrderItem> coffeeToOrderItem(List<CoffeeType> selectedCoffeeTypesList, LinkedHashMap<CoffeeType,Integer> coffeeTypeIntegerLinkedHashMap)
     {
         List<CoffeeOrderItem> coffeeOrderItems = new ArrayList<>();
-        coffeeCounts.removeIf(Objects::isNull);
-        Iterator<CoffeeType> coffeeTypeIterator = coffeeTypesList.iterator();
-        Iterator<Integer> coffeeCountsIterator = coffeeCounts.iterator();
-        while (coffeeTypeIterator.hasNext() && coffeeCountsIterator.hasNext()) {
-            coffeeOrderItems.add(new CoffeeOrderItem(coffeeTypeIterator.next(),coffeeCountsIterator.next()));
+        for (CoffeeType coffeeType : selectedCoffeeTypesList)
+        {
+            coffeeOrderItems.add(new CoffeeOrderItem(coffeeType,coffeeTypeIntegerLinkedHashMap.get(coffeeType)));
         }
         return coffeeOrderItems;
     }
