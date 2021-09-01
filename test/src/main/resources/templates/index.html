@@ -21,14 +21,14 @@
         <tr th:each="coffee : ${coffeeTypes}">
             <td><input type="checkbox" name="coffeeField" id="check" th:value="${coffee.key.id}" th:field="*{selectedCoffeeTypes}"></td>
             <td nowrap="true" th:text="${coffee.key.typeName}"></td>
-            <td nowrap="true" th:text="${coffee.key.price}"> руб.</td>
+            <td nowrap="true" th:text="${coffee.key.price} + ' руб.'"> руб.</td>
             <td align="right" class="block"><input class="field input" type="number" size="5" onfocus="blur();" id="input" th:value="${coffee.key.id}" th:field="*{selectedCoffeeCounts}"/></td>
         </tr>
         <tr style="background-color: #F0F0F0">
             <td colspan="4" align="right"><input type="submit" value="Заказать"/></td>
         </tr>
     </table>
-    <font color="red">*</font> - каждая третья чашка бесплатно.
+    <p th:text="'* Каждая ' + ${config.cup} + ' чашка бесплатно.'"></p>
 </form>
 </body>
 </html>

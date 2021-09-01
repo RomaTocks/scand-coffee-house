@@ -1,5 +1,6 @@
-package com.scand.test.models;
+package com.scand.test.models.wrappers;
 
+import com.scand.test.models.CoffeeType;
 import com.scand.test.services.annotations.NullArray;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,10 +9,9 @@ import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
- * Класс-обёртка для получения данных с формы HTML.
+ * Класс-обёртка CoffeeType для получения данных с формы HTML.
  */
 @Component
 @Data

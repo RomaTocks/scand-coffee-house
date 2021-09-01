@@ -6,8 +6,6 @@ import com.scand.test.services.ConfigurationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class ConfigurationServiceImpl implements ConfigurationService
 {
@@ -20,27 +18,9 @@ public class ConfigurationServiceImpl implements ConfigurationService
     }
 
     @Override
-    public Configuration findById(Integer id)
+    public Configuration findById(String id)
     {
         if(configurationRepository.findById(id).isPresent()) return configurationRepository.findById(id).get();
         else return null;
-    }
-
-    @Override
-    public List<Configuration> findAll()
-    {
-        return configurationRepository.findAll();
-    }
-
-    @Override
-    public Configuration saveEntity(Configuration coffee)
-    {
-        return configurationRepository.save(coffee);
-    }
-
-    @Override
-    public void delete(Integer id)
-    {
-        configurationRepository.deleteById(id);
     }
 }

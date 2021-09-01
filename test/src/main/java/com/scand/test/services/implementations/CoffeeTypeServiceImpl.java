@@ -1,15 +1,15 @@
 package com.scand.test.services.implementations;
 
-import com.scand.test.models.CoffeeOrderItem;
 import com.scand.test.models.CoffeeType;
-import com.scand.test.models.CoffeeWrapper;
+import com.scand.test.models.wrappers.CoffeeWrapper;
 import com.scand.test.repositories.CoffeeTypeRepository;
 import com.scand.test.services.CoffeeTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 @Service
 public class CoffeeTypeServiceImpl implements CoffeeTypeService
@@ -48,6 +48,12 @@ public class CoffeeTypeServiceImpl implements CoffeeTypeService
         coffeeTypeRepository.deleteById(id);
     }
 
+    /**
+     * Метод проверяет наличие количества у выбранных кофе в заказе.
+     * @param wrapper Обьект обёртка класса CoffeeType.
+     * @return true - если у всех выбранных кофе есть количество.
+     * @return false - если хотя бы у одного кофе отсутсвует количество.
+     */
     @Override
     public boolean checkCoffeeAndCounts(CoffeeWrapper wrapper)
     {
@@ -61,6 +67,11 @@ public class CoffeeTypeServiceImpl implements CoffeeTypeService
         return answer;
     }
 
+    /**
+     * Метод формирует коллекцию с типами кофе и выбранным количеством.
+     * @param wrapper Обьект обёртка класса CoffeeType.
+     * @return coffeeTypeAndCount - коллекция с типами кофе и их количеством.
+     */
     @Override
     public LinkedHashMap<CoffeeType, Integer> createCoffeeAndCountsLinkedHashMap(CoffeeWrapper wrapper)
     {

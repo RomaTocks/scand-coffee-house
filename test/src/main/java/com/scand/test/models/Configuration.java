@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -16,7 +17,13 @@ import javax.persistence.Table;
 @ToString
 @Getter
 @Setter
-public class Configuration extends Coffee {
-  @Column(name = "value")
-  private String value;
+public class Configuration {
+  @Id
+  private String id;
+  @Column(name = "cup")
+  private Integer cup;
+  @Column(name = "freedelivery")
+  private Integer freeDelivery;
+  @Column(name = "deliverycost")
+  private Integer deliveryCost;
 }

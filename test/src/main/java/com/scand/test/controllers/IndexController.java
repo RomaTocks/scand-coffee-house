@@ -2,7 +2,8 @@ package com.scand.test.controllers;
 
 import com.scand.test.controllers.attributes.ControllersAttributes;
 import com.scand.test.models.CoffeeOrderItem;
-import com.scand.test.models.CoffeeWrapper;
+import com.scand.test.models.wrappers.CoffeeWrapper;
+import com.scand.test.models.wrappers.OrderWrapper;
 import com.scand.test.services.CoffeeOrderItemService;
 import com.scand.test.services.CoffeeOrderService;
 import com.scand.test.services.CoffeeTypeService;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -45,16 +45,19 @@ public class IndexController extends ControllersAttributes
     }
 
     @PostMapping("/orderlist")
-    public String toOrder(@Valid @ModelAttribute("wrapper") CoffeeWrapper wrapper, BindingResult bindingResult, Model model, HttpSession session) {
+    public String toOrderList(@Valid @ModelAttribute("wrapper") CoffeeWrapper wrapper, BindingResult bindingResult, Model model, HttpSession session) {
         if(!coffeeTypeService.checkCoffeeAndCounts(wrapper)) model.addAttribute("customException","Количество выбранного кофейка не может быть пустым, отрицательным или равно 0.");
         if(bindingResult.hasErrors() || !coffeeTypeService.checkCoffeeAndCounts(wrapper)) {
             return "index";
         }
         else {
             List<CoffeeOrderItem> coffeeOrderItemList = coffeeOrderItemService.coffeeToOrderItem(wrapper.getSelectedCoffeeTypes(), coffeeTypeService.createCoffeeAndCountsLinkedHashMap(wrapper));
+            double sumOfOrder = coffeeOrderService.calculateCostOfOrder(coffeeOrderItemList, configuration());
             session.setAttribute("orderItems",coffeeOrderItemList);
-            model.addAttribute("orderItems", coffeeOrderItemList);
-            model.addAttribute("cost", coffeeOrderService.calculateCostOfOrder(coffeeOrderItemList));
+            model.addAttribute("orderWrapper", new OrderWrapper(coffeeOrderService.generateNewOrderItemsAndPriceMap(coffeeOrderItemList,configuration())));
+            model.addAttribute("cost", sumOfOrder);
+            model.addAttribute("allCost", coffeeOrderService.calculateAllCostOfOrder(coffeeOrderItemList,configuration()));
+            model.addAttribute("delivery", coffeeOrderService.costOfDelivery(sumOfOrder,configuration()));
             return "orderlist";
         }
     }
