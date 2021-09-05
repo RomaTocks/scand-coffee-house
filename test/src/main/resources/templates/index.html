@@ -7,28 +7,117 @@
     <link rel="script" th:href="@{/js/index.js}">
 </head>
 <body>
-<form name="coffeeform" action="#" th:action="@{/orderlist}" th:object="${wrapper}" method="POST">
-    <table cellspacing="0px" cellpadding="0px" border="0px" style="border: 1px #B0B0B0 solid">
-        <tr style="background-color: #C0C0C7">
-            <th/>
-            <th>Название</th>
-            <th>Цена</th>
-            <th>Количество</th>
-        </tr>
-        <tr th:if="${#fields.hasErrors('selectedCoffeeTypes')}" th:errors="*{selectedCoffeeTypes}"></tr>
-        <tr th:if="${#fields.hasErrors('selectedCoffeeCounts')}" th:errors="*{selectedCoffeeCounts}"></tr>
-        <tr th:if="${customException} != null" th:text="${customException}"></tr>
-        <tr th:each="coffee : ${coffeeTypes}">
-            <td><input type="checkbox" name="coffeeField" id="check" th:value="${coffee.key.id}" th:field="*{selectedCoffeeTypes}"></td>
-            <td nowrap="true" th:text="${coffee.key.typeName}"></td>
-            <td nowrap="true" th:text="${coffee.key.price} + ' руб.'"> руб.</td>
-            <td align="right" class="block"><input class="field input" type="number" size="5" onfocus="blur();" id="input" th:value="${coffee.key.id}" th:field="*{selectedCoffeeCounts}"/></td>
-        </tr>
-        <tr style="background-color: #F0F0F0">
-            <td colspan="4" align="right"><input type="submit" value="Заказать"/></td>
-        </tr>
-    </table>
-    <p th:text="'* Каждая ' + ${config.cup} + ' чашка бесплатно.'"></p>
-</form>
+    <div class="header">
+        <div class="logo">
+            <div class="coffee-pic">
+                <img class="image" th:src="@{/pics/coffee-icon.png}">
+            </div>
+            <div class="content">
+                <div class="main">
+                    <p>Чижовская кофеварня</p>
+                </div>
+                <p>Лучший кофе в Чижовке!</p>
+            </div>
+        </div>
+        <div class="content">
+            <div class="form_toggle">
+                <div class="form_toggle-item item-1">
+                    <input id="fid-1" type="radio" name="radio" value="ru" checked>
+                    <label for="fid-1">РУС</label>
+                </div>
+                <div class="form_toggle-item item-2">
+                    <input id="fid-2" type="radio" name="radio" value="en">
+                    <label for="fid-2">ENG</label>
+                </div>
+
+<!--                let lang = 'ru' 'en'-->
+
+
+<!--                const MESSAGES = {-->
+<!--                ru: {-->
+
+<!--                },-->
+<!--                en: {-->
+
+<!--                }-->
+<!--                }-->
+            </div>
+            <div class="number">
+                <p>+375 29 000 000 0</p>
+            </div>
+            <div class="account">
+                <img class="image" th:src="@{/pics/account.png}">
+            </div>
+        </div>
+    </div>
+    <form name="coffeeform" action="#" th:action="@{/orderlist}" th:object="${wrapper}" method="POST">
+        <div class="menu">
+            <div class="coffee-types">
+                <div class="errors">
+                    <p th:if="${#fields.hasErrors('selectedCoffeeTypes')}" th:errors="*{selectedCoffeeTypes}"></p>
+                    <p th:if="${#fields.hasErrors('selectedCoffeeCounts')}" th:errors="*{selectedCoffeeCounts}"></p>
+                    <p th:if="${customException} != null" th:text="${customException}"></p>
+                </div>
+                <div class="text">
+                    <h1>Наш кофеёк:</h1>
+                    <div class="rows">
+                        <p>Фото</p>
+                        <p>Наименование</p>
+                        <p>Цена</p>
+                        <p>Количество</p>
+                        <p>Выбор</p>
+                    </div>
+                </div>
+                <div class="coffee-type" th:each="coffee : ${coffeeTypes}">
+                    <div class="coffee-pic">
+                        <img class="image" th:src="@{/pics/coffee-icon.png}">
+                    </div>
+                    <div class="content">
+                        <p class="name" th:text="${coffee.key.typeName}"></p>
+                        <p  class="price" th:text="${coffee.key.price} + ' руб.'"></p>
+                        <div class="number">
+                            <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">-</button>
+                            <input type="number" min="0" value="1" th:value="${coffee.key.id}" th:field="*{selectedCoffeeCounts}" readonly>
+                            <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">+</button>
+                        </div>
+                        <input class="checkbox" type="checkbox" name="coffeeField" id="check" th:value="${coffee.key.id}" th:field="*{selectedCoffeeTypes}">
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="Заказать"/>
+            <div class="alert">
+                <img class="image" th:src="@{/pics/info.png}">
+                <p th:text="'* Каждая ' + ${config.cup} + ' чашка бесплатно.'"></p>
+            </div>
+        </div>
+    </form>
+    <footer>
+        <div class="text">
+            <p>SCAND TEST TASK. Developed by RomaTocks.</p>
+        </div>
+    </footer>
+<!--    <form name="coffeeform" action="#" th:action="@{/orderlist}" th:object="${wrapper}" method="POST">-->
+<!--        <table cellspacing="0px" cellpadding="0px" border="0px" style="border: 1px #B0B0B0 solid">-->
+<!--            <tr style="background-color: #C0C0C7">-->
+<!--                <th/>-->
+<!--                <th>Название</th>-->
+<!--                <th>Цена</th>-->
+<!--                <th>Количество</th>-->
+<!--            </tr>-->
+<!--            <tr th:if="${#fields.hasErrors('selectedCoffeeTypes')}" th:errors="*{selectedCoffeeTypes}"></tr>-->
+<!--            <tr th:if="${#fields.hasErrors('selectedCoffeeCounts')}" th:errors="*{selectedCoffeeCounts}"></tr>-->
+<!--            <tr th:if="${customException} != null" th:text="${customException}"></tr>-->
+<!--            <tr th:each="coffee : ${coffeeTypes}">-->
+<!--                <td><input type="checkbox" name="coffeeField" id="check" th:value="${coffee.key.id}" th:field="*{selectedCoffeeTypes}"></td>-->
+<!--                <td nowrap="true" th:text="${coffee.key.typeName}"></td>-->
+<!--                <td nowrap="true" th:text="${coffee.key.price} + ' руб.'"> руб.</td>-->
+<!--                <td align="right" class="block"><input class="field input" type="number" size="5" onfocus="blur();" id="input" th:value="${coffee.key.id}" th:field="*{selectedCoffeeCounts}"/></td>-->
+<!--            </tr>-->
+<!--            <tr style="background-color: #F0F0F0">-->
+<!--                <td colspan="4" align="right"><input type="submit" value="Заказать"/></td>-->
+<!--            </tr>-->
+<!--        </table>-->
+<!--        <p th:text="'* Каждая ' + ${config.cup} + ' чашка бесплатно.'"></p>-->
+<!--    </form>-->
 </body>
 </html>
