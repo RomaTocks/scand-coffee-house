@@ -1,64 +1,83 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../static/css/normalize.css">
+    <link rel="stylesheet" th:href="@{/css/normalize.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/orderlist.css}">
 </head>
 <body>
-<form th:object="${orderWrapper}" action="#" th:action="@{/orderlist/order}" th:method="POST">
-    <table cellspacing="0px" cellpadding="2px" border="0px" style="border: 1px #B0B0B0 solid">
-        <tr style="background-color: #C0C0C7">
-            <th colspan="2">Доставка</th>
-        </tr>
-        <tr style="background-color: #F0F0F0">
-        <tr th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></tr>
-            <td><b>ФИО</b></td>
-            <td nowrap="true"><input class="field" type="text" size="30" th:field="*{name}"/></td>
-        </tr>
-        <tr th:if="${#fields.hasErrors('deliveryAddress')}" th:errors="*{deliveryAddress}"></tr>
-        <tr style="background-color: #F0F0F0">
-            <td><b>Адрес</b></td>
-            <td nowrap="true"><input class="field" type="text" size="30" th:field="*{deliveryAddress}"/></td>
-        </tr>
-        <tr style="background-color: #F0F0F0">
-            <td colspan="2" align="right"><input type="submit" value="Заказать"/></td>
-        </tr>
-    </table>
-    <br/>
-    <table cellspacing="0px" cellpadding="2px" border="0px" style="border: 1px #B0B0B0 solid">
-        <tr style="background-color: #C0C0C7">
-            <th>Название</th>
-            <th>Цена</th>
-            <th>Количество</th>
-            <th>Всего</th>
-        </tr>
-
-        <tr style="background-color: #F0F0F0" th:each="item : ${orderWrapper.coffeeOrderAndPrice}">
-            <td nowrap="true" th:text="${item.key.coffeeType.typeName}"></td>
-            <td nowrap="true" th:text="${item.key.coffeeType.price} + ' руб.'"></td>
-            <td align="right" th:if="${item.key.quantity} < ${config.cup}" th:text="${item.key.quantity}"></td>
-            <td align="right" th:if="${item.key.quantity} >= ${config.cup}" style="color: red" th:text="${item.key.quantity}"></td>
-            <td align="right" th:if="${item.key.quantity} < ${config.cup}" th:text="${item.value} + ' руб.'"></td>
-            <td align="right" th:if="${item.key.quantity} >= ${config.cup}" style="color: red" th:text="${item.value} + ' руб.'"></td>
-        </tr>
-        <tr style="background-color: #E0E0E0">
-            <td colspan="3" align="right"><b>Сумма:</b></td>
-            <td align="right"><p th:text="${cost} + ' руб.'"></p></td>
-        </tr>
-        <tr style="background-color: #F0F0F0">
-            <td colspan="3" align="right"><b>Доставка:</b></td>
-            <td align="right" th:if="${delivery} > 0" th:text="${delivery} + ' руб.'"></td>
-            <td align="right" th:if="${delivery} == 0" style="color: red" th:text="${delivery} + ' руб.'"></td>
-        </tr>
-        <tr style="background-color: #E0E0E0">
-            <td colspan="3" align="right"><b>Всего:</b></td>
-            <td align="right" th:text="${allCost} + ' руб.'"></td>
-        </tr>
-    </table>
-    <p th:text="'Бесплатная доставка от ' + ${config.freeDelivery} + ' руб.'"></p>
-    <p th:text="'* Каждая ' + ${config.cup} + ' чашка бесплатно.'"></p>
-    <br/>
-    <a href="/"><link>Вернуться в магазин</link></a>
-</form>
+    <div th:insert="header :: #header"></div>
+    <form class="order-form" th:object="${orderWrapper}" action="#" th:action="@{/orderlist/order}" th:method="POST">
+        <div class="order">
+            <div class="errors">
+                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+                <div th:if="${#fields.hasErrors('deliveryAddress')}" th:errors="*{deliveryAddress}"></div>
+            </div>
+            <div class="delivery">
+                <div class="head">
+                    <h1>Доставка</h1>
+                </div>
+                <div class="input">
+                    <b>ФИО</b>
+                    <input class="field" type="text" size="30" th:field="*{name}"/>
+                </div>
+                <div class="input">
+                    <b>Адрес</b>
+                    <input class="field" type="text" size="30" th:field="*{deliveryAddress}"/>
+                </div>
+            </div>
+            <div class="order-items">
+                <div class="text">
+                    <div class="rows">
+                        <p>Фото</p>
+                        <p>Название</p>
+                        <p>Цена</p>
+                        <p>Количество</p>
+                        <p>Всего</p>
+                    </div>
+                </div>
+                <div class="order-item" th:each="item : ${orderWrapper.coffeeOrderAndPrice}">
+                    <div class="coffee-pic">
+                        <img class="image" th:src="@{/pics/coffee-icon.png}">
+                    </div>
+                    <div class="content">
+                        <p class="name" th:text="${item.key.coffeeType.typeName}"></p>
+                        <p class="price" th:text="${item.key.coffeeType.price} + ' руб.'"></p>
+                        <p class="quantity" th:if="${item.key.quantity} < ${config.cup}" th:text="${item.key.quantity}"></p>
+                        <p class="quantity red" th:if="${item.key.quantity} >= ${config.cup}" th:text="${item.key.quantity}"></p>
+                        <p class="sum" th:if="${item.key.quantity} < ${config.cup}" th:text="${item.value} + ' руб.'"></p>
+                        <p class="sum red" th:if="${item.key.quantity} >= ${config.cup}" th:text="${item.value} + ' руб.'"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="total">
+                <div class="column">
+                    <p><b>Сумма:</b></p>
+                    <p th:text="${cost} + ' руб.'"></p>
+                </div>
+                <div class="column">
+                    <p><b>Доставка:</b></p>
+                    <p th:if="${delivery} > 0" th:text="${delivery} + ' руб.'"></p>
+                    <p class="red" th:if="${delivery} == 0" th:text="${delivery} + ' руб.'"></p>
+                </div>
+                <div class="column">
+                    <p><b>Всего:</b></p>
+                    <p th:text="${allCost} + ' руб.'"></p>
+                </div>
+            </div>
+            <input type="submit" value="Заказать"/>
+            <div class="alert">
+                <img class="image" th:src="@{/pics/info.png}">
+                <p th:text="'Бесплатная доставка от ' + ${config.freeDelivery} + ' руб.'"></p>
+            </div>
+            <div class="alert">
+                <img class="image" th:src="@{/pics/info.png}">
+                <p th:text="'* Каждая ' + ${config.cup} + ' чашка бесплатно.'"></p>
+            </div>
+        </div>
+    </form>
+    <footer th:insert="footer :: #footer"></footer>
 </body>
 </html>
 

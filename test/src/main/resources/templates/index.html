@@ -4,53 +4,12 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/css/normalize.css}">
     <link rel="stylesheet" th:href="@{/css/index.css}">
-    <link rel="script" th:href="@{/js/index.js}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
 </head>
 <body>
-    <div class="header">
-        <div class="logo">
-            <div class="coffee-pic">
-                <img class="image" th:src="@{/pics/coffee-icon.png}">
-            </div>
-            <div class="content">
-                <div class="main">
-                    <p>Чижовская кофеварня</p>
-                </div>
-                <p>Лучший кофе в Чижовке!</p>
-            </div>
-        </div>
-        <div class="content">
-            <div class="form_toggle">
-                <div class="form_toggle-item item-1">
-                    <input id="fid-1" type="radio" name="radio" value="ru" checked>
-                    <label for="fid-1">РУС</label>
-                </div>
-                <div class="form_toggle-item item-2">
-                    <input id="fid-2" type="radio" name="radio" value="en">
-                    <label for="fid-2">ENG</label>
-                </div>
-
-<!--                let lang = 'ru' 'en'-->
-
-
-<!--                const MESSAGES = {-->
-<!--                ru: {-->
-
-<!--                },-->
-<!--                en: {-->
-
-<!--                }-->
-<!--                }-->
-            </div>
-            <div class="number">
-                <p>+375 29 000 000 0</p>
-            </div>
-            <div class="account">
-                <img class="image" th:src="@{/pics/account.png}">
-            </div>
-        </div>
-    </div>
-    <form name="coffeeform" action="#" th:action="@{/orderlist}" th:object="${wrapper}" method="POST">
+    <div th:insert="header :: #header"></div>
+    <form class="coffee-form" name="coffeeform" action="#" th:action="@{/orderlist}" th:object="${wrapper}" method="POST">
         <div class="menu">
             <div class="coffee-types">
                 <div class="errors">
@@ -91,33 +50,6 @@
             </div>
         </div>
     </form>
-    <footer>
-        <div class="text">
-            <p>SCAND TEST TASK. Developed by RomaTocks.</p>
-        </div>
-    </footer>
-<!--    <form name="coffeeform" action="#" th:action="@{/orderlist}" th:object="${wrapper}" method="POST">-->
-<!--        <table cellspacing="0px" cellpadding="0px" border="0px" style="border: 1px #B0B0B0 solid">-->
-<!--            <tr style="background-color: #C0C0C7">-->
-<!--                <th/>-->
-<!--                <th>Название</th>-->
-<!--                <th>Цена</th>-->
-<!--                <th>Количество</th>-->
-<!--            </tr>-->
-<!--            <tr th:if="${#fields.hasErrors('selectedCoffeeTypes')}" th:errors="*{selectedCoffeeTypes}"></tr>-->
-<!--            <tr th:if="${#fields.hasErrors('selectedCoffeeCounts')}" th:errors="*{selectedCoffeeCounts}"></tr>-->
-<!--            <tr th:if="${customException} != null" th:text="${customException}"></tr>-->
-<!--            <tr th:each="coffee : ${coffeeTypes}">-->
-<!--                <td><input type="checkbox" name="coffeeField" id="check" th:value="${coffee.key.id}" th:field="*{selectedCoffeeTypes}"></td>-->
-<!--                <td nowrap="true" th:text="${coffee.key.typeName}"></td>-->
-<!--                <td nowrap="true" th:text="${coffee.key.price} + ' руб.'"> руб.</td>-->
-<!--                <td align="right" class="block"><input class="field input" type="number" size="5" onfocus="blur();" id="input" th:value="${coffee.key.id}" th:field="*{selectedCoffeeCounts}"/></td>-->
-<!--            </tr>-->
-<!--            <tr style="background-color: #F0F0F0">-->
-<!--                <td colspan="4" align="right"><input type="submit" value="Заказать"/></td>-->
-<!--            </tr>-->
-<!--        </table>-->
-<!--        <p th:text="'* Каждая ' + ${config.cup} + ' чашка бесплатно.'"></p>-->
-<!--    </form>-->
+    <footer th:insert="footer :: #footer"></footer>
 </body>
 </html>

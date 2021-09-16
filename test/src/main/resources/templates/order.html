@@ -1,19 +1,24 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../static/css/normalize.css">
+    <link rel="stylesheet" th:href="@{/css/normalize.css}">
+    <link rel="stylesheet" th:href="@{/css/order.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
 </head>
 <body>
-<table width="300px" cellspacing="0px" cellpadding="2px" border="0px" style="border: 1px #B0B0B0 solid">
-    <tr style="background-color: #C0C0C7">
-        <th>Подтверждение</th>
-    </tr>
-    <tr style="background-color: #F0F0F0" align="center">
-        <td>Ваш заказ принят</td>
-    </tr>
-</table>
-<br/>
-<a href="/"><link>Вернуться в магазин</link></a>
+    <div th:insert="header :: #header"></div>
+    <div class="thanks">
+        <div class="notification">
+            <div class="title">
+                <h1>Спасибо за заказ!</h1>
+            </div>
+            <div class="content">
+                <p>Низкий поклон от Чижовской кофеварни!</p>
+            </div>
+        </div>
+    </div>
+    <footer th:insert="footer :: #footer"></footer>
 </body>
 </html>
 

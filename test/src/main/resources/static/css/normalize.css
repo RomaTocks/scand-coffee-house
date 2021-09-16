@@ -36,8 +36,26 @@ INPUT.field
 input[type="submit"] {
     background-color: white;
     color: black;
-    border: 2px solid #9a794b; /* Green */
+    border: 2px solid #9a794b;
     width: 200px;
     height: 40px;
     border-radius: 20px;
+}
+.alert{
+    width:50%;
+    margin:20px auto;
+    height: 70px;
+    border-radius:5px;
+    border: 1px solid #C0C0C7;
+    display: flex;
+    align-items: center;
+}
+.alert p {
+    font-size: larger;
+    margin-left: 15px;
+}
+.alert .image {
+    align-self: center;
+    width: 50px;
+    margin-left: 15px;
 }

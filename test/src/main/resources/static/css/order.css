@@ -1,0 +1,24 @@
+.thanks {
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.notification {
+    padding: 20px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #b8b8b8;
+    border-radius: 15px;
+}
+.notification .title {
+    width: 100%;
+    text-align: center;
+    border: 2px solid #9a794b;
+    border-width: 0px 0px 2px;
+}
+.notification .content {
+    font-size: larger;
+}

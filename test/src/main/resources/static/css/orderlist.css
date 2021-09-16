@@ -1,0 +1,104 @@
+.order-form {
+    height: 950px;
+    display: flex;
+    align-items: center;
+}
+.order {
+    height: 900px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.order .delivery {
+    width: 300px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.order .delivery .input {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.order .delivery .input b {
+    align-self: flex-start;
+    margin-left: 20px;
+}
+.order .delivery .input input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+}
+.order .delivery .input input:focus {
+    border: 3px solid #555;
+}
+.order-items {
+    width: 60%;
+    border: 2px black solid;
+    border-width: 0px 0px 2px 0px;
+    padding-bottom: 10px;
+}
+.order-items .text {
+    border: 2px black solid;
+    border-width: 0px 0px 2px 0px;
+    margin-bottom: 10px;
+}
+.order-items .text .rows {
+    display: flex;
+    width: 100%;
+}
+.order-items .text .rows > p {
+    font-size: larger;
+    font-weight: bolder;
+    flex-basis: 20%;
+    text-align: center;
+}
+.order-item {
+    display: flex;
+}
+.order-item .coffee-pic {
+    flex-basis: 20%;
+    display: flex;
+    justify-content: center;
+}
+.order-item .coffee-pic img {
+    width: 100px;
+}
+.order-item .content {
+    display: flex;
+    align-items: center;
+    flex-basis: 80%;
+}
+.order-item .content p {
+    flex-basis: 25%;
+    text-align: center;
+    font-size: larger;
+}
+.order .total {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    align-items: flex-end;
+}
+.order .total .column {
+    display: flex;
+    text-align: right;
+    width: 150px;
+    justify-content: space-between;
+}
+.order .total .column * {
+    font-size: larger;
+}
+.red {
+    color: red;
+}
