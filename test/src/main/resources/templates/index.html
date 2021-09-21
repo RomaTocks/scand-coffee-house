@@ -13,6 +13,14 @@
         <div class="menu">
             <div class="coffee-types">
                 <div class="errors">
+                    <div id="count-exception" class="exception disabled">
+                        <img class="image" th:src="@{/pics/error.png}">
+                        <p>Нужно указать количество кофейка!</p>
+                    </div>
+                    <div id="coffee-exception" class="exception disabled">
+                        <img class="image" th:src="@{/pics/error.png}">
+                        <p>Нужно выбрать кофеёк!</p>
+                    </div>
                     <p th:if="${#fields.hasErrors('selectedCoffeeTypes')}" th:errors="*{selectedCoffeeTypes}"></p>
                     <p th:if="${#fields.hasErrors('selectedCoffeeCounts')}" th:errors="*{selectedCoffeeCounts}"></p>
                     <p th:if="${customException} != null" th:text="${customException}"></p>
@@ -36,14 +44,14 @@
                         <p  class="price" th:text="${coffee.key.price} + ' руб.'"></p>
                         <div class="number">
                             <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">-</button>
-                            <input type="number" min="0" value="1" th:value="${coffee.key.id}" th:field="*{selectedCoffeeCounts}" readonly>
+                            <input type="number" min="0" value="0" th:id="'input' + ${coffee.key.id}" th:field="*{selectedCoffeeCounts}" readonly>
                             <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">+</button>
                         </div>
-                        <input class="checkbox" type="checkbox" name="coffeeField" id="check" th:value="${coffee.key.id}" th:field="*{selectedCoffeeTypes}">
+                        <input class="checkbox" type="checkbox" th:checked="false" name="coffeeField" th:id="${coffee.key.id}" th:onchange="'checkValue(' + ${coffee.key.id} + ')'" th:value="${coffee.key.id}" th:field="*{selectedCoffeeTypes}">
                     </div>
                 </div>
             </div>
-            <input type="submit" value="Заказать"/>
+            <input type="submit" onclick="return handleSubmit();" value="Заказать"/>
             <div class="alert">
                 <img class="image" th:src="@{/pics/info.png}">
                 <p th:text="'* Каждая ' + ${config.cup} + ' чашка бесплатно.'"></p>
@@ -52,4 +60,5 @@
     </form>
     <footer th:insert="footer :: #footer"></footer>
 </body>
+<script th:src="@{/js/index.js}" th:inline="javascript"></script>
 </html>

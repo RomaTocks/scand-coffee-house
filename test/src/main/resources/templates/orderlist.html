@@ -20,11 +20,17 @@
                 </div>
                 <div class="input">
                     <b>ФИО</b>
-                    <input class="field" type="text" size="30" th:field="*{name}"/>
+                    <input id="name" class="field" type="text" size="30" th:field="*{name}"/>
+                </div>
+                <div class="exception">
+                    <p id="name-exception"></p>
                 </div>
                 <div class="input">
                     <b>Адрес</b>
-                    <input class="field" type="text" size="30" th:field="*{deliveryAddress}"/>
+                    <input id="address" class="field" type="text" size="30" th:field="*{deliveryAddress}"/>
+                </div>
+                <div class="exception">
+                    <p id="address-exception"></p>
                 </div>
             </div>
             <div class="order-items">
@@ -66,7 +72,7 @@
                     <p th:text="${allCost} + ' руб.'"></p>
                 </div>
             </div>
-            <input type="submit" value="Заказать"/>
+            <input type="submit" onclick="return handleSubmit();" value="Заказать"/>
             <div class="alert">
                 <img class="image" th:src="@{/pics/info.png}">
                 <p th:text="'Бесплатная доставка от ' + ${config.freeDelivery} + ' руб.'"></p>
@@ -79,5 +85,6 @@
     </form>
     <footer th:insert="footer :: #footer"></footer>
 </body>
+<script th:src="@{/js/orderlist.js}"></script>
 </html>
 

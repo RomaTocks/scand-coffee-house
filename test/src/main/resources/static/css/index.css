@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100%;
 }
 .coffee-types .text {
     display: flex;
@@ -61,7 +62,6 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 700px;
     justify-content: center;
 }
 .menu input[type="submit"]{
@@ -69,7 +69,7 @@
 
 }
 .coffee-form {
-    height: 100%;
+    height: 900px;
     display: flex;
     align-items: center;
 }
@@ -122,4 +122,29 @@
     border-left: 1px solid #ddd;
     font-size: 16px;
     font-weight: 600;
+}
+.error-border {
+    border: 1px #e2365d solid;
+}
+.errors {
+    width: 100%;
+}
+.exception {
+    display: flex;
+    padding: 15px;
+    width: 50%;
+    margin: 20px auto;
+    border-radius: 5px;
+    border: 1px solid #e2365d;
+    display: flex;
+    align-items: center;
+    background-color: #fde1e7;
+    font-size: larger;
+}
+.exception .image {
+    width: 50px;
+    margin-right: 15px;
+}
+.disabled {
+    display: none;
 }

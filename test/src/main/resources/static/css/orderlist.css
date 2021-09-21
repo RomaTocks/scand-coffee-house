@@ -24,7 +24,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-top: 10px;
 }
 .order .delivery .input b {
     align-self: flex-start;
@@ -101,4 +101,10 @@
 }
 .red {
     color: red;
+}
+.exception {
+    color: red;
+}
+.error {
+    border: 3px darkred solid !important;
 }
