@@ -15,24 +15,24 @@
                 <div class="errors">
                     <div id="count-exception" class="exception disabled">
                         <img class="image" th:src="@{/pics/error.png}">
-                        <p>Нужно указать количество кофейка!</p>
+                        <p data-i18n="count-error">Нужно указать количество кофейка!</p>
                     </div>
                     <div id="coffee-exception" class="exception disabled">
                         <img class="image" th:src="@{/pics/error.png}">
-                        <p>Нужно выбрать кофеёк!</p>
+                        <p data-i18n="coffee-error">Нужно выбрать кофеёк!</p>
                     </div>
                     <p th:if="${#fields.hasErrors('selectedCoffeeTypes')}" th:errors="*{selectedCoffeeTypes}"></p>
                     <p th:if="${#fields.hasErrors('selectedCoffeeCounts')}" th:errors="*{selectedCoffeeCounts}"></p>
                     <p th:if="${customException} != null" th:text="${customException}"></p>
                 </div>
                 <div class="text">
-                    <h1>Наш кофеёк:</h1>
+                    <h1 data-i18n="menu">Наш кофеёк:</h1>
                     <div class="rows">
-                        <p>Фото</p>
-                        <p>Наименование</p>
-                        <p>Цена</p>
-                        <p>Количество</p>
-                        <p>Выбор</p>
+                        <p data-i18n="photo">Фото</p>
+                        <p data-i18n="name">Наименование</p>
+                        <p data-i18n="cost">Цена</p>
+                        <p data-i18n="count">Количество</p>
+                        <p data-i18n="choice">Выбор</p>
                     </div>
                 </div>
                 <div class="coffee-type" th:each="coffee : ${coffeeTypes}">
@@ -51,14 +51,15 @@
                     </div>
                 </div>
             </div>
-            <input type="submit" onclick="return handleSubmit();" value="Заказать"/>
+            <input data-i18n="order-button" type="submit" onclick="return handleSubmit();" value="Заказать"/>
             <div class="alert">
                 <img class="image" th:src="@{/pics/info.png}">
-                <p th:text="'* Каждая ' + ${config.cup} + ' чашка бесплатно.'"></p>
+                <p data-i18n="free-cup-first" >* Каждая</p><p th:text="${config.cup}"></p><p data-i18n="free-cup-second">чашка бесплатно.</p>
             </div>
         </div>
     </form>
     <footer th:insert="footer :: #footer"></footer>
 </body>
+<script th:src="@{/js/languages.js}"></script>
 <script th:src="@{/js/index.js}" th:inline="javascript"></script>
 </html>

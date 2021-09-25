@@ -1,0 +1,98 @@
+{
+  "header-title" :
+  {
+    "message" : "Chiwowka coffeebakery"
+  },
+  "header-description" :
+  {
+    "message" : "Best coffee in chiwowka!"
+  },
+  "menu" :
+  {
+    "message" : "Our coffee:"
+  },
+  "photo" :
+  {
+    "message" : "Photo"
+  },
+  "name" :
+  {
+    "message" : "Name"
+  },
+  "cost" :
+  {
+    "message" : "Cost"
+  },
+  "count" :
+  {
+    "message" : "Count"
+  },
+  "choice" :
+  {
+    "message" : "Choice"
+  },
+  "order-button" :
+  {
+    "message" : "Order"
+  },
+  "orderlist-button" :
+  {
+    "message" : "Order"
+  },
+  "count-error" :
+  {
+    "message" : "Please, add count of chosen coffee!"
+  },
+  "coffee-error" :
+  {
+    "message" : "Please, choice coffee!"
+  },
+  "all" :
+  {
+    "message" : "Total"
+  },
+  "total" :
+  {
+    "message" : "Total:"
+  },
+  "delivery-sum" :
+  {
+    "message" : "Delivery:"
+  },
+  "delivery" :
+  {
+    "message" : "Delivery"
+  },
+  "all-cost" :
+  {
+    "message" : "All cost:"
+  },
+  "full-name" :
+  {
+    "message" : "Your name"
+  },
+  "address" :
+  {
+    "message" : "Address"
+  },
+  "free-delivery-first" :
+  {
+    "message" : "Free delivery from"
+  },
+  "free-cup-first" :
+  {
+    "message" : "* Every"
+  },
+  "free-cup-second" :
+  {
+    "message" : "cup free!"
+  },
+  "thanks" :
+  {
+    "message" : "Thanks for your order!"
+  },
+  "thanks-description" :
+  {
+    "message" : "Low bow from the Сhiwowka coffebakery!"
+  }
+}

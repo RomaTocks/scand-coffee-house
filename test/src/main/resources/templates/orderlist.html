@@ -16,17 +16,17 @@
             </div>
             <div class="delivery">
                 <div class="head">
-                    <h1>Доставка</h1>
+                    <h1 data-i18n="delivery">Доставка</h1>
                 </div>
                 <div class="input">
-                    <b>ФИО</b>
+                    <b id="name-label" data-i18n="full-name">ФИО</b>
                     <input id="name" class="field" type="text" size="30" th:field="*{name}"/>
                 </div>
                 <div class="exception">
                     <p id="name-exception"></p>
                 </div>
                 <div class="input">
-                    <b>Адрес</b>
+                    <b id="address-label" data-i18n="address">Адрес</b>
                     <input id="address" class="field" type="text" size="30" th:field="*{deliveryAddress}"/>
                 </div>
                 <div class="exception">
@@ -36,11 +36,11 @@
             <div class="order-items">
                 <div class="text">
                     <div class="rows">
-                        <p>Фото</p>
-                        <p>Название</p>
-                        <p>Цена</p>
-                        <p>Количество</p>
-                        <p>Всего</p>
+                        <p data-i18n="photo">Фото</p>
+                        <p data-i18n="name">Название</p>
+                        <p data-i18n="cost">Цена</p>
+                        <p data-i18n="count">Количество</p>
+                        <p data-i18n="all">Всего</p>
                     </div>
                 </div>
                 <div class="order-item" th:each="item : ${orderWrapper.coffeeOrderAndPrice}">
@@ -59,32 +59,33 @@
             </div>
             <div class="total">
                 <div class="column">
-                    <p><b>Сумма:</b></p>
+                    <p><b data-i18n="total">Сумма:</b></p>
                     <p th:text="${cost} + ' руб.'"></p>
                 </div>
                 <div class="column">
-                    <p><b>Доставка:</b></p>
+                    <p><b data-i18n="delivery-sum">Доставка:</b></p>
                     <p th:if="${delivery} > 0" th:text="${delivery} + ' руб.'"></p>
                     <p class="red" th:if="${delivery} == 0" th:text="${delivery} + ' руб.'"></p>
                 </div>
                 <div class="column">
-                    <p><b>Всего:</b></p>
+                    <p><b data-i18n="all-cost">Всего:</b></p>
                     <p th:text="${allCost} + ' руб.'"></p>
                 </div>
             </div>
-            <input type="submit" onclick="return handleSubmit();" value="Заказать"/>
+            <input data-i18n="orderlist-button" type="submit" onclick="return handleSubmit();" value="Заказать"/>
             <div class="alert">
                 <img class="image" th:src="@{/pics/info.png}">
-                <p th:text="'Бесплатная доставка от ' + ${config.freeDelivery} + ' руб.'"></p>
+                <p data-i18n="free-delivery-first">Бесплатная доставка от</p><p th:text="${config.freeDelivery}"></p><p> руб.</p>
             </div>
             <div class="alert">
                 <img class="image" th:src="@{/pics/info.png}">
-                <p th:text="'* Каждая ' + ${config.cup} + ' чашка бесплатно.'"></p>
+                <p data-i18n="free-cup-first" >* Каждая</p><p th:text="${config.cup}"></p><p data-i18n="free-cup-second">чашка бесплатно.</p>
             </div>
         </div>
     </form>
     <footer th:insert="footer :: #footer"></footer>
 </body>
+<script th:src="@{/js/languages.js}"></script>
 <script th:src="@{/js/orderlist.js}"></script>
 </html>
 

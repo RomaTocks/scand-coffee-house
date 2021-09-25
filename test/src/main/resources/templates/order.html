@@ -11,14 +11,15 @@
     <div class="thanks">
         <div class="notification">
             <div class="title">
-                <h1>Спасибо за заказ!</h1>
+                <h1 data-i18n="thanks">Спасибо за заказ!</h1>
             </div>
             <div class="content">
-                <p>Низкий поклон от Чижовской кофеварни!</p>
+                <p data-i18n="thanks-description">Низкий поклон от Чижовской кофеварни!</p>
             </div>
         </div>
     </div>
     <footer th:insert="footer :: #footer"></footer>
 </body>
+<script th:src="@{/js/languages.js}"></script>
 </html>
 

@@ -79,3 +79,6 @@
 .form_toggle .item-2 input[type=radio]:checked + label {
     background: #9f9f9f;
 }
+.disabled {
+    display: none;
+}

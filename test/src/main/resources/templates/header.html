@@ -14,20 +14,20 @@
             </div>
             <div class="content">
                 <div class="main">
-                    <p>Чижовская кофеварня</p>
+                    <p data-i18n="header-title">Чижовская кофеварня</p>
                 </div>
-                <p>Лучший кофе в Чижовке!</p>
+                <p data-i18n="header-description">Лучший кофе в Чижовке!</p>
             </div>
         </div>
         <div class="content">
-            <div class="form_toggle">
+            <div id="lang-buttons" class="disabled">
                 <div class="form_toggle-item item-1">
-                    <input id="fid-1" type="radio" name="radio" value="ru" checked>
-                    <label for="fid-1">РУС</label>
+                    <input class="language" id="ru-button" type="radio" name="radio" value="ru" onclick="setLanguage(this)" checked>
+                    <label for="ru-button">РУС</label>
                 </div>
                 <div class="form_toggle-item item-2">
-                    <input id="fid-2" type="radio" name="radio" value="en">
-                    <label for="fid-2">ENG</label>
+                    <input class="language" id="en-button" type="radio" name="radio" value="en" onclick="setLanguage(this)">
+                    <label for="en-button">ENG</label>
                 </div>
             </div>
             <div class="number">

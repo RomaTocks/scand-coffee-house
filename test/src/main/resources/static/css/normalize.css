@@ -52,7 +52,12 @@ input[type="submit"] {
 }
 .alert p {
     font-size: larger;
+}
+.alert p:nth-child(2){
     margin-left: 15px;
+}
+.alert p:nth-last-child(-n+2){
+    margin-left: 5px;
 }
 .alert .image {
     align-self: center;

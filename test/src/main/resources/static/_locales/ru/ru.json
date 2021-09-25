@@ -1,0 +1,98 @@
+{
+    "header-title" :
+    {
+      "message" : "Чижовская кофеварня"
+    },
+    "header-description" :
+    {
+      "message" : "Лучший кофе в чижовке!"
+    },
+    "menu" :
+    {
+      "message" : "Наш кофеёк:"
+    },
+    "photo" :
+    {
+      "message" : "Фото"
+    },
+    "name" :
+    {
+      "message" : "Наименование"
+    },
+    "cost" :
+    {
+      "message" : "Цена"
+    },
+    "count" :
+    {
+      "message" : "Количество"
+    },
+    "choice" :
+    {
+      "message" : "Выбор"
+    },
+    "order-button" :
+    {
+      "message" : "Заказать"
+    },
+    "orderlist-button" :
+    {
+      "message" : "Заказать"
+    },
+    "count-error" :
+    {
+      "message" : "Нужно указать количество кофейка!"
+    },
+    "coffee-error" :
+    {
+      "message" : "Нужно выбрать кофеёк!"
+    },
+    "all" :
+    {
+      "message" : "Всего"
+    },
+    "total" :
+    {
+      "message" : "Сумма:"
+    },
+    "delivery-sum" :
+    {
+      "message" : "Доставка:"
+    },
+    "delivery" :
+    {
+      "message" : "Доставка"
+    },
+    "all-cost" :
+    {
+      "message" : "Всего:"
+    },
+    "full-name" :
+    {
+      "message" : "ФИО"
+    },
+    "address" :
+    {
+      "message" : "Адрес"
+    },
+    "free-delivery-first" :
+    {
+      "message" : "Бесплатная доставка от"
+    },
+    "free-cup-first" :
+    {
+      "message" : "* Каждая"
+    },
+    "free-cup-second" :
+    {
+      "message" : "чашка бесплатно!"
+    },
+    "thanks" :
+    {
+      "message" : "Спасибо за заказ!"
+    },
+    "thanks-description" :
+    {
+      "message" : "Низкий поклон от Чижовской кофеварни!"
+    }
+}
