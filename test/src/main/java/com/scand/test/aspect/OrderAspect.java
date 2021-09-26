@@ -48,7 +48,6 @@ public class OrderAspect
         }
         else {
             if (orderItems == null) {
-                System.out.println("Переадресация...");
                 return "redirect:/";
             }
             else {

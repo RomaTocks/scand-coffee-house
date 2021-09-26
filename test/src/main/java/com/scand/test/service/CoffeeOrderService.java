@@ -8,7 +8,6 @@ import com.scand.test.model.wrapper.OrderWrapper;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-// TODO: 30.08.2021 Создать методы: расчёта n-ой бесплатной кружки кофе, расчёт доставки, общей суммы.  
 public interface CoffeeOrderService
 {
     CoffeeOrder saveEntity(CoffeeOrder coffee);

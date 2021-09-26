@@ -32,10 +32,4 @@ public class CoffeeOrderItemServiceImpl implements CoffeeOrderItemService
         }
         return coffeeOrderItems;
     }
-
-    @Override
-    public List<CoffeeOrderItem> saveAllCoffeeOrderItems(List<CoffeeOrderItem> coffeeOrderItems)
-    {
-        return coffeeOrderItemRepository.saveAll(coffeeOrderItems);
-    }
 }

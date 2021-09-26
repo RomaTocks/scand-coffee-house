@@ -43,11 +43,11 @@
                         <p class="name" th:text="${coffee.key.typeName}"></p>
                         <p  class="price" th:text="${coffee.key.price} + ' руб.'"></p>
                         <div class="number">
-                            <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">-</button>
-                            <input type="number" min="0" value="0" th:id="'input' + ${coffee.key.id}" th:field="*{selectedCoffeeCounts}" readonly>
-                            <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">+</button>
+                            <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown()">-</button>
+                            <input class="coffee-count" value type="number" min="0" th:id="'input' + ${coffee.key.id}" th:field="*{selectedCoffeeCounts}" readonly>
+                            <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp()">+</button>
                         </div>
-                        <input class="checkbox" type="checkbox" th:checked="false" name="coffeeField" th:id="${coffee.key.id}" th:onchange="'checkValue(' + ${coffee.key.id} + ')'" th:value="${coffee.key.id}" th:field="*{selectedCoffeeTypes}">
+                        <input class="checkbox" type="checkbox" th:checked="false" name="coffeeField" th:id="${coffee.key.id}" th:value="${coffee.key.id}" th:field="*{selectedCoffeeTypes}">
                     </div>
                 </div>
             </div>

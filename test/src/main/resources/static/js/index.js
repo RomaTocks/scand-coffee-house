@@ -1,3 +1,7 @@
+let inputs = document.getElementsByClassName("coffee-count");
+for (let input of inputs) {
+    input.value = 0;
+}
 function handleSubmit() {
     let answer = true;
     let checkboxCounts = 0;

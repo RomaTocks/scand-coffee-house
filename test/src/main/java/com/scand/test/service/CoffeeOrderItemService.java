@@ -9,5 +9,4 @@ import java.util.List;
 public interface CoffeeOrderItemService
 {
     List<CoffeeOrderItem> coffeeToOrderItem(List<CoffeeType> coffeeTypesList, LinkedHashMap<CoffeeType,Integer> coffeeTypeIntegerLinkedHashMap);
-    List<CoffeeOrderItem> saveAllCoffeeOrderItems(List<CoffeeOrderItem> coffeeOrderItems);
 }

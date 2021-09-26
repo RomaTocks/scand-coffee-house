@@ -19,9 +19,6 @@ public class CoffeeOrderItem extends Coffee
   @ManyToOne
   @JoinColumn(name = "coffeetype_id")
   private CoffeeType coffeeType;
-  @ManyToOne
-  @JoinColumn(name = "coffeeorder_id")
-  private CoffeeOrder coffeeOrder;
 
   public CoffeeOrderItem( CoffeeType coffeeType, Integer quantity)
   {

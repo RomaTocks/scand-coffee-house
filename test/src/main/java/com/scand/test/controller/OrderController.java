@@ -40,13 +40,11 @@ public class OrderController extends ControllersAttributes
         this.coffeeTypeService = coffeeTypeService;
     }
 
-    // TODO: 30.08.2021 Исправить связи между сущностями для сохранения заказа.
     @PostMapping("/order")
     public String saveOrder(@Valid @ModelAttribute("orderWrapper") OrderWrapper wrapper, BindingResult bindingResult, HttpSession session, Model model) {
         ArrayList<CoffeeOrderItem> orderItems = (ArrayList<CoffeeOrderItem>) session.getAttribute("orderItems");
-        CoffeeOrder orderFromDataBase = coffeeOrderService.saveEntity(coffeeOrderService.generateNewOrder(wrapper, orderItems, configuration()));
-        orderItems.forEach(coffeeOrderItem -> coffeeOrderItem.setCoffeeOrder(orderFromDataBase));
-        coffeeOrderItemService.saveAllCoffeeOrderItems(orderItems);
+        CoffeeOrder order = coffeeOrderService.generateNewOrder(wrapper, orderItems, configuration());
+        coffeeOrderService.saveEntity(order);
         session.removeAttribute("orderItems");
         return ORDER;
     }

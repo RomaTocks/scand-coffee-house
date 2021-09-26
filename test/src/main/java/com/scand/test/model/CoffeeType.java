@@ -1,6 +1,5 @@
 package com.scand.test.model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,16 +25,6 @@ public class CoffeeType extends Coffee implements Comparable
   private String disabled;
   @OneToMany(mappedBy = "coffeeType")
   private List<CoffeeOrderItem> orderItems;
-
-  @Override
-  public String toString()
-  {
-    return "CoffeeType{" +
-            "typeName='" + typeName + '\'' +
-            ", price=" + price +
-            ", disabled='" + disabled + '\'' +
-            '}';
-  }
 
   @Override
   public int compareTo(Object o)
