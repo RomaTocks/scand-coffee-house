@@ -36,7 +36,30 @@
             <div class="account">
                 <img class="image" th:src="@{/pics/account.png}">
             </div>
+            <div id="burger" class="burger">
+                <img onclick="navbar()" th:src="@{/pics/menu.png}">
+            </div>
         </div>
+    </div>
+    <div id="sidebar" class="sidebar-not-active">
+        <div id="sidebar-group" class="right-group right-group-not-active">
+            <div class="number">
+                <p>+375 29 000 000 0</p>
+            </div>
+            <div id="lang-buttons" class="form_toggle">
+                <div class="form_toggle-item item-1">
+                    <input class="language" id="ru-button-menu" type="radio" name="radio-first" value="ru" onclick="setLanguage(this)" checked>
+                    <label for="ru-button-menu">РУС</label>
+                </div>
+                <div class="form_toggle-item item-2">
+                    <input class="language" id="en-button-menu" type="radio" name="radio-first" value="en" onclick="setLanguage(this)">
+                    <label for="en-button-menu">ENG</label>
+                </div>
+            </div>
+        </div>
+        <a class="sidebar-element element-not-active" href="/">Главная</a>
+        <a class="sidebar-element element-not-active" href="#">О нас</a>
+        <a class="sidebar-element element-not-active" href="#">GitHub</a>
     </div>
 </body>
 </html>

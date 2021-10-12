@@ -1,5 +1,4 @@
-let inputs = document.getElementsByClassName("coffee-count");
-for (let input of inputs) {
+for (let input of document.getElementsByClassName("coffee-count")) {
     input.value = 0;
 }
 function handleSubmit() {

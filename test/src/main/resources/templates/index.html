@@ -2,13 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/normalize.css}">
+    <link rel="stylesheet" th:href="@{/css/sidebar.css}">
     <link rel="stylesheet" th:href="@{/css/index.css}">
     <link rel="stylesheet" th:href="@{/css/header.css}">
     <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/adaptive.css}">
 </head>
 <body>
-    <div th:insert="header :: #header"></div>
+<div>
+    <div id="main">
+        <div th:insert="header :: #header"></div>
+        <div th:insert="header :: #sidebar"></div>
+    </div>
     <form class="coffee-form" name="coffeeform" action="#" th:action="@{/orderlist}" th:object="${wrapper}" method="POST">
         <div class="menu">
             <div class="coffee-types">
@@ -40,14 +47,21 @@
                         <img class="image" th:src="@{/pics/coffee-icon.png}">
                     </div>
                     <div class="content">
-                        <p class="name" th:text="${coffee.key.typeName}"></p>
-                        <p  class="price" th:text="${coffee.key.price} + ' руб.'"></p>
-                        <div class="number">
-                            <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown()">-</button>
-                            <input class="coffee-count" value type="number" min="0" th:id="'input' + ${coffee.key.id}" th:field="*{selectedCoffeeCounts}" readonly>
-                            <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                        <div class="text">
+                            <p class="name" th:text="${coffee.key.typeName}"></p>
+                            <p  class="price" th:text="${coffee.key.price} + ' руб.'"></p>
                         </div>
-                        <input class="checkbox" type="checkbox" th:checked="false" name="coffeeField" th:id="${coffee.key.id}" th:value="${coffee.key.id}" th:field="*{selectedCoffeeTypes}">
+                        <div class="actions">
+                            <div class="number">
+                                <button th:id="'down' + ${coffee.key.id}" class="number-minus" type="button" onclick="this.nextElementSibling.stepDown()">-</button>
+                                <input class="coffee-count" value type="number" min="0" th:id="'input' + ${coffee.key.id}" th:field="*{selectedCoffeeCounts}" readonly>
+                                <button th:id="'up' + ${coffee.key.id}" class="number-plus" type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                            </div>
+                            <div class="button">
+                                <input hidden class="checkbox" type="checkbox" th:checked="false" name="coffeeField" th:id="${coffee.key.id}" th:value="${coffee.key.id}" th:field="*{selectedCoffeeTypes}">
+                                <label data-i18n="choiceButton" class="label" th:for="${coffee.key.id}">Выбрать</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -58,8 +72,11 @@
             </div>
         </div>
     </form>
+</div>
+
     <footer th:insert="footer :: #footer"></footer>
 </body>
+<script th:src="@{/js/sidebar.js}"></script>
 <script th:src="@{/js/languages.js}"></script>
 <script th:src="@{/js/index.js}" th:inline="javascript"></script>
 </html>

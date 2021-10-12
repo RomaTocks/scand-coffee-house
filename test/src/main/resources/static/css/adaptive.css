@@ -1,0 +1,182 @@
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px)
+{
+    /* index.html */
+
+    .coffee-type, .coffee-types .text {
+        width: 90%;
+    }
+    #header > .content .number p{
+        width: 180px;
+    }
+    .header .logo .content .main > p {
+        font-size: 25px;
+    }
+
+    /* orderlist.html */
+
+    .order-items, .order .total {
+        width: 70%;
+    }
+
+    /* order.html */
+
+    .thanks .notification {
+        width: 70%;
+    }
+
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media screen and (max-width: 767.98px)
+{
+    /* index.html */
+
+    .coffee-type, .coffee-types .text {
+        width: 95%;
+    }
+    #header > .content {
+        display: flex;
+    }
+    #header > .content > * {
+        display: none;
+    }
+    #header > .content .burger{
+        display: flex;
+        margin-right: 25px;
+    }
+
+    /* orderlist.html */
+
+    .order-items, .order .total {
+        width: 90%;
+    }
+
+    /* order.html */
+
+    .thanks .notification {
+        width: 70%;
+    }
+
+}
+
+/* X-Small devices (portrait phones, less than 576px) */
+@media screen and (max-width:576px) {
+
+    /* index.html */
+
+    .header .logo .content .main > p {
+        font-size: 20px;
+    }
+    #header .logo {
+        justify-content: center;
+    }
+    #header > .content .burger{
+        margin-right: 15px;
+    }
+    #header .logo .coffee-pic .image {
+        width: 80px;
+    }
+    .coffee-form {
+        height: 2000px;
+    }
+    .coffee-form .menu .coffee-types .errors > * {
+        width: 90%;
+    }
+    .coffee-form .menu .coffee-types .text {
+        width: 80%;
+    }
+    .coffee-form .menu .coffee-types .text .rows {
+        display: none;
+    }
+    .coffee-form .menu .coffee-types .coffee-type {
+        width: 100%;
+        flex-direction: column;
+    }
+    .coffee-form .menu .coffee-types .coffee-type .coffee-pic {
+        flex-basis: 100%;
+    }
+    .coffee-form .menu .coffee-types .coffee-type .coffee-pic .image {
+        width: 200px;
+    }
+    .coffee-form .menu .coffee-types .coffee-type .content {
+        flex-basis: 100%;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        margin-top: 15px;
+    }
+    .coffee-form .menu .coffee-types .coffee-type .content > .text {
+        font-size: 20px;
+    }
+    .coffee-form .menu .coffee-types .coffee-type .content > .text > p:first-child {
+        text-align: start;
+    }
+    .coffee-form .menu .coffee-types .coffee-type .content > .text > p:last-child {
+        text-align: end;
+    }
+    .coffee-form .menu .coffee-types .coffee-type .actions {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+    }
+    .coffee-form .menu .coffee-types .coffee-type .actions .number {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .coffee-form .menu .coffee-types .coffee-type .actions .button, .button .label {
+        width: 100%;
+        text-align: center;
+    }
+    .coffee-form .menu .coffee-types .coffee-type .actions .number > button[type="button"] {
+        width: 25%;
+    }
+    .coffee-form .menu .coffee-types .coffee-type .actions .number > input[type="number"] {
+        height: 50px;
+    }
+    .alert {
+        width: 95%;
+    }
+    footer .text{
+        justify-content: center;
+        margin: 0;
+    }
+
+    /* orderlist.html */
+
+    .order {
+        height: 1500px;
+    }
+    .order .total .column *, .order .delivery .input b, .order-item .content p, .alert p  {
+        font-size: medium;
+    }
+    .order-item {
+        flex-direction: column;
+    }
+    .order .total {
+        width: 95%;
+    }
+    .order-items {
+        width: 100%;
+    }
+    .order-items .text .rows > p {
+        flex-basis: 25%;
+    }
+    .order-items .text .rows > p:first-child {
+        display: none;
+    }
+    .order-items .order-item .coffee-pic img {
+        width: 120px;
+    }
+
+    /* order.html */
+
+    .thanks .notification {
+        width: 80%;
+    }
+    .thanks .notification .content > p {
+        font-size: 14px;
+    }
+
+}
+

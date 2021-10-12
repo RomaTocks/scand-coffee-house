@@ -82,3 +82,13 @@
 .disabled {
     display: none;
 }
+.burger {
+    display: none;
+    transition: 0.3s;
+}
+.burger-active {
+    transform: rotate(90deg);
+}
+.burger img {
+    width: 30px;
+}

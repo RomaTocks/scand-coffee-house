@@ -94,5 +94,9 @@
     "thanks-description" :
     {
       "message" : "Низкий поклон от Чижовской кофеварни!"
+    },
+    "choiceButton" :
+    {
+      "message" : "Выбрать"
     }
 }
