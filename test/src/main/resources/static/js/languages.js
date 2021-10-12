@@ -12,6 +12,7 @@ function setLanguage(element) {
     changeLanguage();
 }
 function changeLanguage() {
+    updateLanguagesButtons();
     document.body.setAttribute("lang",currentLang)
     const allTranslatedFields = document.querySelectorAll("[data-i18n]");
     for (let field of allTranslatedFields) {
@@ -41,14 +42,17 @@ function loadLocalLanguage() {
 }
 function updateLanguagesButtons() {
     let buttons = document.getElementsByClassName("language");
-    let currentButton;
+    let currentButtons = [];
     for (let button of buttons) {
         button.removeAttribute("checked");
         if(button.value === currentLang) {
-            currentButton = button;
+            currentButtons.push(button);
         }
     }
-    currentButton.setAttribute("checked",true);
+    currentButtons.forEach(button => {
+        button.checked = true;
+        button.setAttribute("checked",true)
+    });
 }
 function loadJSON() {
     languagesList.forEach(lang => {

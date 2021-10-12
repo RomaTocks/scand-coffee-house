@@ -64,3 +64,8 @@ input[type="submit"] {
     width: 50px;
     margin-left: 15px;
 }
+#main {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}

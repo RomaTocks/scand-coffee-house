@@ -1,25 +1,34 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/normalize.css}">
+    <link rel="stylesheet" th:href="@{/css/sidebar.css}">
     <link rel="stylesheet" th:href="@{/css/order.css}">
     <link rel="stylesheet" th:href="@{/css/header.css}">
     <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/adaptive.css}">
 </head>
 <body>
-    <div th:insert="header :: #header"></div>
-    <div class="thanks">
-        <div class="notification">
-            <div class="title">
-                <h1 data-i18n="thanks">Спасибо за заказ!</h1>
-            </div>
-            <div class="content">
-                <p data-i18n="thanks-description">Низкий поклон от Чижовской кофеварни!</p>
+    <div>
+        <div id="main">
+            <div th:insert="header :: #header"></div>
+            <div th:insert="header :: #sidebar"></div>
+        </div>
+        <div class="thanks">
+            <div class="notification">
+                <div class="title">
+                    <h1 data-i18n="thanks">Спасибо за заказ!</h1>
+                </div>
+                <div class="content">
+                    <p data-i18n="thanks-description">Низкий поклон от Чижовской кофеварни!</p>
+                </div>
             </div>
         </div>
     </div>
     <footer th:insert="footer :: #footer"></footer>
 </body>
+<script th:src="@{/js/sidebar.js}"></script>
 <script th:src="@{/js/languages.js}"></script>
 </html>
 

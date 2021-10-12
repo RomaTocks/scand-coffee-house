@@ -1,5 +1,4 @@
 .order-form {
-    height: 950px;
     display: flex;
     align-items: center;
 }
@@ -43,7 +42,7 @@
     border: 3px solid #555;
 }
 .order-items {
-    width: 60%;
+    width: 800px;
     border: 2px black solid;
     border-width: 0px 0px 2px 0px;
     padding-bottom: 10px;
@@ -87,7 +86,7 @@
 .order .total {
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 800px;
     align-items: flex-end;
 }
 .order .total .column {

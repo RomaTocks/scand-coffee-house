@@ -3,6 +3,7 @@ package com.scand.test.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,6 +24,7 @@ public class CoffeeType extends Coffee implements Comparable
   private Double price;
   @Column(name = "disabled")
   private String disabled;
+  @ToString.Exclude
   @OneToMany(mappedBy = "coffeeType")
   private List<CoffeeOrderItem> orderItems;
 

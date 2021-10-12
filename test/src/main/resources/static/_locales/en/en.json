@@ -94,5 +94,9 @@
   "thanks-description" :
   {
     "message" : "Low bow from the Сhiwowka coffebakery!"
+  },
+  "choiceButton" :
+  {
+    "message" : "Choice"
   }
 }

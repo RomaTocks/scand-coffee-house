@@ -1,90 +1,99 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/normalize.css}">
     <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/sidebar.css}">
     <link rel="stylesheet" th:href="@{/css/footer.css}">
     <link rel="stylesheet" th:href="@{/css/orderlist.css}">
+    <link rel="stylesheet" th:href="@{/css/adaptive.css}">
 </head>
 <body>
-    <div th:insert="header :: #header"></div>
-    <form class="order-form" th:object="${orderWrapper}" action="#" th:action="@{/orderlist/order}" th:method="POST">
-        <div class="order">
-            <div class="errors">
-                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
-                <div th:if="${#fields.hasErrors('deliveryAddress')}" th:errors="*{deliveryAddress}"></div>
-            </div>
-            <div class="delivery">
-                <div class="head">
-                    <h1 data-i18n="delivery">Доставка</h1>
-                </div>
-                <div class="input">
-                    <b id="name-label" data-i18n="full-name">ФИО</b>
-                    <input id="name" class="field" type="text" size="30" th:field="*{name}"/>
-                </div>
-                <div class="exception">
-                    <p id="name-exception"></p>
-                </div>
-                <div class="input">
-                    <b id="address-label" data-i18n="address">Адрес</b>
-                    <input id="address" class="field" type="text" size="30" th:field="*{deliveryAddress}"/>
-                </div>
-                <div class="exception">
-                    <p id="address-exception"></p>
-                </div>
-            </div>
-            <div class="order-items">
-                <div class="text">
-                    <div class="rows">
-                        <p data-i18n="photo">Фото</p>
-                        <p data-i18n="name">Название</p>
-                        <p data-i18n="cost">Цена</p>
-                        <p data-i18n="count">Количество</p>
-                        <p data-i18n="all">Всего</p>
-                    </div>
-                </div>
-                <div class="order-item" th:each="item : ${orderWrapper.coffeeOrderAndPrice}">
-                    <div class="coffee-pic">
-                        <img class="image" th:src="@{/pics/coffee-icon.png}">
-                    </div>
-                    <div class="content">
-                        <p class="name" th:text="${item.key.coffeeType.typeName}"></p>
-                        <p class="price" th:text="${item.key.coffeeType.price} + ' руб.'"></p>
-                        <p class="quantity" th:if="${item.key.quantity} < ${config.cup}" th:text="${item.key.quantity}"></p>
-                        <p class="quantity red" th:if="${item.key.quantity} >= ${config.cup}" th:text="${item.key.quantity}"></p>
-                        <p class="sum" th:if="${item.key.quantity} < ${config.cup}" th:text="${item.value} + ' руб.'"></p>
-                        <p class="sum red" th:if="${item.key.quantity} >= ${config.cup}" th:text="${item.value} + ' руб.'"></p>
-                    </div>
-                </div>
-            </div>
-            <div class="total">
-                <div class="column">
-                    <p><b data-i18n="total">Сумма:</b></p>
-                    <p th:text="${cost} + ' руб.'"></p>
-                </div>
-                <div class="column">
-                    <p><b data-i18n="delivery-sum">Доставка:</b></p>
-                    <p th:if="${delivery} > 0" th:text="${delivery} + ' руб.'"></p>
-                    <p class="red" th:if="${delivery} == 0" th:text="${delivery} + ' руб.'"></p>
-                </div>
-                <div class="column">
-                    <p><b data-i18n="all-cost">Всего:</b></p>
-                    <p th:text="${allCost} + ' руб.'"></p>
-                </div>
-            </div>
-            <input data-i18n="orderlist-button" type="submit" onclick="return handleSubmit();" value="Заказать"/>
-            <div class="alert">
-                <img class="image" th:src="@{/pics/info.png}">
-                <p data-i18n="free-delivery-first">Бесплатная доставка от</p><p th:text="${config.freeDelivery}"></p><p> руб.</p>
-            </div>
-            <div class="alert">
-                <img class="image" th:src="@{/pics/info.png}">
-                <p data-i18n="free-cup-first" >* Каждая</p><p th:text="${config.cup}"></p><p data-i18n="free-cup-second">чашка бесплатно.</p>
-            </div>
+    <div>
+        <div id="main">
+            <div th:insert="header :: #header"></div>
+            <div th:insert="header :: #sidebar"></div>
         </div>
-    </form>
+        <form class="order-form" th:object="${orderWrapper}" action="#" th:action="@{/orderlist/order}" th:method="POST">
+            <div class="order">
+                <div class="errors">
+                    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+                    <div th:if="${#fields.hasErrors('deliveryAddress')}" th:errors="*{deliveryAddress}"></div>
+                </div>
+                <div class="delivery">
+                    <div class="head">
+                        <h1 data-i18n="delivery">Доставка</h1>
+                    </div>
+                    <div class="input">
+                        <b id="name-label" data-i18n="full-name">ФИО</b>
+                        <input id="name" class="field" type="text" size="30" th:field="*{name}"/>
+                    </div>
+                    <div class="exception">
+                        <p id="name-exception"></p>
+                    </div>
+                    <div class="input">
+                        <b id="address-label" data-i18n="address">Адрес</b>
+                        <input id="address" class="field" type="text" size="30" th:field="*{deliveryAddress}"/>
+                    </div>
+                    <div class="exception">
+                        <p id="address-exception"></p>
+                    </div>
+                </div>
+                <div class="order-items">
+                    <div class="text">
+                        <div class="rows">
+                            <p data-i18n="photo">Фото</p>
+                            <p data-i18n="name">Название</p>
+                            <p data-i18n="cost">Цена</p>
+                            <p data-i18n="count">Количество</p>
+                            <p data-i18n="all">Всего</p>
+                        </div>
+                    </div>
+                    <div class="order-item" th:each="item : ${orderWrapper.coffeeOrderAndPrice}">
+                        <div class="coffee-pic">
+                            <img class="image" th:src="@{/pics/coffee-icon.png}">
+                        </div>
+                        <div class="content">
+                            <p class="name" th:text="${item.key.coffeeType.typeName}"></p>
+                            <p class="price" th:text="${item.key.coffeeType.price} + ' руб.'"></p>
+                            <p class="quantity" th:if="${item.key.quantity} < ${config.cup}" th:text="${item.key.quantity}"></p>
+                            <p class="quantity red" th:if="${item.key.quantity} >= ${config.cup}" th:text="${item.key.quantity}"></p>
+                            <p class="sum" th:if="${item.key.quantity} < ${config.cup}" th:text="${item.value} + ' руб.'"></p>
+                            <p class="sum red" th:if="${item.key.quantity} >= ${config.cup}" th:text="${item.value} + ' руб.'"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="total">
+                    <div class="column">
+                        <p><b data-i18n="total">Сумма:</b></p>
+                        <p th:text="${cost} + ' руб.'"></p>
+                    </div>
+                    <div class="column">
+                        <p><b data-i18n="delivery-sum">Доставка:</b></p>
+                        <p th:if="${delivery} > 0" th:text="${delivery} + ' руб.'"></p>
+                        <p class="red" th:if="${delivery} == 0" th:text="${delivery} + ' руб.'"></p>
+                    </div>
+                    <div class="column">
+                        <p><b data-i18n="all-cost">Всего:</b></p>
+                        <p th:text="${allCost} + ' руб.'"></p>
+                    </div>
+                </div>
+                <input data-i18n="orderlist-button" type="submit" onclick="return handleSubmit();" value="Заказать"/>
+                <div class="alert">
+                    <img class="image" th:src="@{/pics/info.png}">
+                    <p data-i18n="free-delivery-first">Бесплатная доставка от</p><p th:text="${config.freeDelivery}"></p><p> руб.</p>
+                </div>
+                <div class="alert">
+                    <img class="image" th:src="@{/pics/info.png}">
+                    <p data-i18n="free-cup-first" >* Каждая</p><p th:text="${config.cup}"></p><p data-i18n="free-cup-second">чашка бесплатно.</p>
+                </div>
+            </div>
+        </form>
+    </div>
     <footer th:insert="footer :: #footer"></footer>
 </body>
+<script th:src="@{/js/sidebar.js}"></script>
 <script th:src="@{/js/languages.js}"></script>
 <script th:src="@{/js/orderlist.js}"></script>
 </html>

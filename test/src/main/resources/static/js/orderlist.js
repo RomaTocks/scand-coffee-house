@@ -1,5 +1,6 @@
 let nameException = document.getElementById("name-exception");
 nameException.innerText = "";
+
 function handleSubmit() {
     let answer = true;
     let nameAnswer = validation("name");
