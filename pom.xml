@@ -15,7 +15,7 @@
 	<name>test</name>
 	<description>Test task of SCAND company</description>
 	<properties>
-		<java.version>16</java.version>
+		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
