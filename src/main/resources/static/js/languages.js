@@ -56,7 +56,7 @@ function updateLanguagesButtons() {
 }
 function loadJSON() {
     languagesList.forEach(lang => {
-        fetch('http://localhost:8080/_locales/'+ lang +'/' + lang + '.json')
+        fetch(window.location.origin + '/_locales/'+ lang +'/' + lang + '.json')
             .then((response) => {
                 return response.json();
             })
