@@ -89,13 +89,14 @@
     justify-content: center;
 }
 .menu input[type="submit"]{
+    margin: 40px 0px;
     align-self: center;
 
 }
 .coffee-form {
-    height: 900px;
     display: flex;
     align-items: center;
+    padding: 50px 0px;
 }
 .coffee-type .number {
     display: inline-block;
@@ -120,6 +121,7 @@
     display: none;
 }
 .coffee-type .number-minus {
+    cursor: pointer;
     position: absolute;
     top: 1px;
     left: 1px;
@@ -134,6 +136,7 @@
     font-weight: 600;
 }
 .coffee-type .number-plus {
+    cursor: pointer;
     position: absolute;
     top: 1px;
     right: 1px;
@@ -174,6 +177,7 @@
 }
 
 .label {
+    cursor: pointer;
     border: 2px gray solid;
     padding: 10px;
     border-radius: 5px;

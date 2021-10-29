@@ -98,5 +98,17 @@
     "choiceButton" :
     {
       "message" : "Выбрать"
+    },
+    "catalog" :
+    {
+      "message" : "Каталог"
+    },
+    "about-us" :
+    {
+      "message" : "О нас"
+    },
+    "reviews" :
+    {
+      "message" : "Отзывы"
     }
 }

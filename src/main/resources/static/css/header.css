@@ -1,15 +1,17 @@
 .header {
+    flex-wrap: wrap;
     display: flex;
     justify-content: space-between;
     background-color: white;
-    height: 80px;
     align-items: center;
-    border: #9a794b solid;
-    border-width: 0px 0px 20px 0px;
+}
+.break {
+    flex-basis: 100%;
 }
 .header .logo {
     display: flex;
     align-items: center;
+    padding: 10px 0px;
 }
 .header .logo .coffee-pic .image {
     width: 100px;
@@ -91,4 +93,27 @@
 }
 .burger img {
     width: 30px;
+}
+.navbar {
+    list-style-type: none;
+    text-align: center;
+    background-color: #9a794b;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    font-size: 14px;
+    color: white;
+}
+.navbar > li {
+    padding: 10px 50px;
+    display: flex;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: 0.5s;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+}
+.navbar > li:hover{
+    border-bottom: 3px solid white;
 }

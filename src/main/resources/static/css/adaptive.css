@@ -3,6 +3,9 @@
 {
     /* index.html */
 
+    .navbar {
+        font-size: 13px;
+    }
     .coffee-type, .coffee-types .text {
         width: 90%;
     }
@@ -45,6 +48,12 @@
         display: flex;
         margin-right: 25px;
     }
+    .navbar {
+        padding: 10px;
+    }
+    .navbar > li {
+      display: none;
+    }
 
     /* orderlist.html */
 
@@ -76,9 +85,6 @@
     }
     #header .logo .coffee-pic .image {
         width: 80px;
-    }
-    .coffee-form {
-        height: 2000px;
     }
     .coffee-form .menu .coffee-types .errors > * {
         width: 90%;
@@ -144,9 +150,6 @@
 
     /* orderlist.html */
 
-    .order {
-        height: 1500px;
-    }
     .order .total .column *, .order .delivery .input b, .order-item .content p, .alert p  {
         font-size: medium;
     }

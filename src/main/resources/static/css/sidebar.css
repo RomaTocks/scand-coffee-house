@@ -4,7 +4,7 @@
     transition: 0.3s;
 }
 .sidebar-active {
-    height: 230px;
+    height: 310px;
 }
 .sidebar-not-active {
     height: 0px;

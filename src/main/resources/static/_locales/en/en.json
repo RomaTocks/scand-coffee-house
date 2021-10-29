@@ -98,5 +98,17 @@
   "choiceButton" :
   {
     "message" : "Choice"
+  },
+  "catalog" :
+  {
+    "message" : "Catalog"
+  },
+  "about-us" :
+  {
+    "message" : "About us"
+  },
+  "reviews" :
+  {
+    "message" : "Reviews"
   }
 }

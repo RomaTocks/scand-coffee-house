@@ -40,6 +40,14 @@
                 <img onclick="navbar()" th:src="@{/pics/menu.png}">
             </div>
         </div>
+        <div class="break"></div>
+        <div class="navbar">
+            <li data-i18n="catalog">КАТАЛОГ</li>
+            <li data-i18n="about-us">О НАС</li>
+            <li data-i18n="reviews">ОТЗЫВЫ</li>
+            <li>FAQ</li>
+            <li>GITHUB</li>
+        </div>
     </div>
     <div id="sidebar" class="sidebar-not-active">
         <div id="sidebar-group" class="right-group right-group-not-active">
@@ -57,8 +65,10 @@
                 </div>
             </div>
         </div>
-        <a class="sidebar-element element-not-active" href="/">Главная</a>
-        <a class="sidebar-element element-not-active" href="#">О нас</a>
+        <a class="sidebar-element element-not-active" data-i18n="catalog" href="/">Каталог</a>
+        <a class="sidebar-element element-not-active" data-i18n="about-us" href="#">О нас</a>
+        <a class="sidebar-element element-not-active" data-i18n="reviews" href="#">Отзывы</a>
+        <a class="sidebar-element element-not-active" href="#">FAQ</a>
         <a class="sidebar-element element-not-active" href="#">GitHub</a>
     </div>
 </body>
